@@ -128,7 +128,7 @@ module.exports = (bot) => {
         retrieveData(emojiList[prop], results => {
           const apidata = bot.brain.set(results)
           res.send(outputRecipes(results), function() {
-            res.send('\nWould you like to see the ingredients for your favourite recipe? Enter a number between 1-5 to see the list of ingredients \n1. ' + results.hits[0].recipe.label + '\n2. ' + results.hits[1].recipe.label  + '\n3. ' + results.hits[2].recipe.label + '\n4. ' + results.hits[3].recipe.label + '\n5. ' + results.hits[4].recipe.label)
+            res.send('\nWould you like to see the ingredients for your favourite recipe?\nEnter the recipe number between 1-5 to see the list of ingredients\n \n1. ' + results.hits[0].recipe.label + '\n2. ' + results.hits[1].recipe.label  + '\n3. ' + results.hits[2].recipe.label + '\n4. ' + results.hits[3].recipe.label + '\n5. ' + results.hits[4].recipe.label)
             dialog.addChoice(/(.*)/i, res => {
               const ingredChoice = parseInt(res.match[1])-1
               res.reply('\nThe ingredients used in ' + apidata.data._private.hits[ingredChoice].recipe.label + ' are:\n' + apidata.data._private.hits[ingredChoice].recipe.ingredientLines.join('\r\n') + '\n\nWould you like to know how many servings are in this recipe and its diet label?')
