@@ -44,6 +44,10 @@ const outputRecipes = (results) => {
 
 
 module.exports = (bot) => {
+  bot.enter(res => {
+    res.send("Welcome to Emoji Eats. Send me a food emoji and I'll search for some recipes you can try");
+  });
+
   const switchBoard = new Conversation(bot);
 
   bot.hear(/(.*)/, res => {
